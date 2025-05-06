@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    float Salariobruto, Salarioneto, Remaining;
+    float Salariobruto, Salarioneto;
     float Isss, Afp, Renta, Totaldiscount;
     char Option;
 
@@ -26,7 +26,7 @@ int main()
         if (Salariobruto < 1000)
         {
             Isss = Salariobruto * 0.03;
-            cout << "Your ISSS discount is " << Isss << endl;
+            cout << "Your ISSS discount is $" << Isss << endl;
         }
         else
         {
@@ -38,14 +38,27 @@ int main()
 
     case 'b':
         Afp = Salariobruto * 0.0725;
-        cout << "Your AFP discount is " << Afp << endl;
+        cout << "Your AFP discount is $" << Afp << endl;
 
         /* calculates the AFP discount, which is the 7.25% of the gross income*/
         break;
 
+    case 'c':
+        if (Salariobruto < 1000)
+        {
+            Isss = Salariobruto * 0.03;
+        }
+        else
+        {
+            Isss = 30; /*it changes in here because I dont want to show ths part to the user*/
+        }
+       
+        Afp = Salariobruto * 0.0725;
+
+        /* this is in order this case recognizes isss and afp*/
+
         Salarioneto = Salariobruto - Isss - Afp;
 
-    case 'c':
         if (Salarioneto <= 472.99)
         {
             cout << "Exento" << endl;
@@ -53,37 +66,37 @@ int main()
         else if (Salarioneto > 472.99 && Salarioneto <= 895.24)
         {
             Renta = Salarioneto * 0.10;
-            cout << "Se aplica el 10%. Su renta es de " << Renta << endl;
+            cout << "Se aplica el 10%. Su renta es de $" << Renta << endl;
         }
         else if (Salarioneto > 895.24 && Salarioneto <= 2038.10)
         {
             Renta = Salarioneto * 0.20;
-            cout << "Se aplica el 20%. Su renta es de " << Renta << endl;
+            cout << "Se aplica el 20%. Su renta es de $" << Renta << endl;
         }
         else if (Salarioneto > 2038.10)
         {
-            cout << "Se aplica el 30%. Su renta es de " << Renta << endl;
+            cout << "Se aplica el 30%. Su renta es de $" << Renta << endl;
         }
 
         /*Calculates the Renta depending on the net income (this is after ISSS and AFP discounts)*/
         break;
 
     case 'd':
-    Remaining = Salariobruto - Isss - Afp - Renta;
-    Totaldiscount = Isss + Afp + Renta;
-    cout << "ISSS discount is "<< Isss << endl;
-    cout << "AFP discount is "<< Afp << endl;
-    cout << "Rent discount is "<< Renta << endl;
-    cout << "The total of all discounts is  "<< Totaldiscount << endl;
-    cout << "The remaining amount is "<< Remaining << endl;
-
-    /* Calculate the total of all discounts and display the remaining amount after applying ISSS, AFP, and rent, along with details of each discount.*/
+        Totaldiscount = Isss + Afp + Renta;
+        cout << "ISSS discount is " << Isss << endl;
+        cout << "AFP discount is " << Afp << endl;
+        cout << "Rent discount is " << Renta << endl;
+        cout << "The total of all discounts is  " << Totaldiscount << endl;
+        
+        /* Calculate the total of all discounts and display the remaining amount after applying ISSS, AFP, and rent, along with details of each discount.*/
 
     default:
-        cout << "That option it is not valid." << endl; 
-        
+        cout << "That option it is not valid." << endl;
+
         break;
     }
 
     return 0;
+
+    /*Derechos de autor: Leila Saraí Campos Peraza. 2025*/
 }
